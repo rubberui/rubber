@@ -58,7 +58,7 @@ fun main(args: Array<String>) {
     vm ~ com.mairwunnx.home.HomeViewModel
 
 FlexBox
-    TextBlock
+    TextBox
         cssId < "text"
         text <> "Count: {}" vm::count
     Button
