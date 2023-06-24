@@ -1,11 +1,11 @@
 @declare
-    vm ~ com.mairwunnx.home.HomeViewModel
+    vm ~ proto.HomeViewModel
 
 FlexBox
     TextBox
-        cssId < "text"
+        styleId < "text"
         text <> "Count: {}" vm::count
     Button
-        cssId < "increment"
+        styleId < "increment"
         text < "Increment"
         command > vm::increment

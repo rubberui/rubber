@@ -59,10 +59,10 @@ fun main(args: Array<String>) {
 
 FlexBox
     TextBox
-        cssId < "text"
+        styleId < "text"
         text <> "Count: {}" vm::count
     Button
-        cssId < "increment"
+        styleId < "increment"
         text < "Increment"
         command > vm::increment
 ```
