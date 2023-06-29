@@ -297,7 +297,7 @@ new Resources(
 
 ```java
 new IPC(
-  new IPCMessage<SomeMessageArg>("somemessage", SomeMessage::new), // SomeMessage implements serializable
+  new IPCMessage<SomeMessageArg>("somemessage", SomeMessage::new), // SomeMessageArg implements serializable
   new IPCMessage<NotificationMessageArg>("notification", NotificationMessage::new)
 ),
 ``` 
