@@ -204,8 +204,8 @@ _Я лучше решения, не придумал_.
 Так мы декларируем дополнительные политики, для приложения, предупреждаем если свободной памяти хипа, меньше 512МБ, и предупреждаем, если свободной памяти ПЗУ `<=` 1GB, убиваем приложение, если свободной памяти в ПЗУ, осталось `<=` 100MB.
 
 ```java
-new MemoryPolitics(new WarnOnInsufficient(new MB(512))),
-new StoragePolitics(
+new MemoryPolicy(new WarnOnInsufficient(new MB(512))),
+new StoragePolicy(
   new WarnOnInsuffient(new GB(1)),
   new CrashOnInsuffient(new MB(100))
 ),
