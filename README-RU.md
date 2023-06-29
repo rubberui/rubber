@@ -293,12 +293,12 @@ new Resources(
 Декларативным образом, мы так же можем задекларировать, на уровне приложения, IPC сообщения, которые мы можем обработать в приложении.
 Под капотом, это очень примитивно реализовано, на данный момент, общение все реализуется через `ServerSocketChannel` по семейству протокола `UNIX` (_Unix domain (Local) interprocess communication_).
 
-Сообщение декларируется с обобщенным типом (сигнатура обобщенного типа `IPCMessage` имеет ограничение на `java.io.Serializable`), с которым мы сможем работать, так же декларируется для сообщения "ключ", само название сообщения, для идентификации. Ну и само сообщение `NotificationMessage`, к примеру, которое реализует `Message`, с методом `process`, и конструктор которого принимает аргумент `NotificationMessage`.
+Сообщение декларируется с обобщенным типом (сигнатура обобщенного типа `IPCMessage` имеет ограничение на `java.io.Serializable`), с которым мы сможем работать, так же декларируется для сообщения "ключ", само название сообщения, для идентификации. Ну и само сообщение `NotificationMessage`, к примеру, которое реализует `Message`, с методом `process`, и конструктор которого принимает аргумент `NotificationMessageArg`.
 
 ```java
 new IPC(
-  new IPCMessage<SomeMessage>("somemessage", SomeMessage::new), // SomeMessage implements serializable
-  new IPCMessage<NotificationMessage>("notification", NotificationMessage::new)
+  new IPCMessage<SomeMessageArg>("somemessage", SomeMessage::new), // SomeMessage implements serializable
+  new IPCMessage<NotificationMessageArg>("notification", NotificationMessage::new)
 ),
 ``` 
 
