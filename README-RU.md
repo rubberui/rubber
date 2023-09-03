@@ -328,6 +328,52 @@ new Configurations(
 
 Так же есть другие реализации, `RegeditConfiguration` (_который работает только на ОС Windows_), ну и пока все :).
 
+#### 13. Конфигурация приложения без кода
+
+Раз это уж декларативный фреймворк, почему бы не использовать существующие форматы описания данных, которые полностью по своей сути, декларативны.
+
+Возьмем за пример yaml. (`application.yaml` в `resources`)
+
+```yaml
+application:
+  name: "Rubber demo"                                         # Application name, used with logger and some other components.
+  introspect:                                                 # Enable introspection with default settings.
+    port: 3001                                                # Local network port for introspection (with another app).
+  renderer:                                                   # Setup renderer!
+    window:                                                   # Setup window!
+      color: "#ffffff"                                        # Setup default window color
+      title: "Rubber DWM Demo"                                # Specify window title (otherwise .jar name used (ProtectedDomain#codeSource->location))
+      icon: "like.png"                                        # Specify window icon (otherwise default windows icon)
+      size: "800x600"                                         # Specify window size (otherwise 640x420)
+    monitor: 0                                                # Specify monitor (othersise 0 (primary))
+    root:                                                     # Specify rendering root
+      - content: "home.yaml"                                  # home.yaml will rendered
+        stylesheet: "home.css"                                # home.css will used for styling home.yaml
+        viewmodel: com.mairwunnx.dwm.HomeViewModel            # viewmodel which will used for home.yaml
+```
+
+Я оставил комментарии для того, чтобы было легче понять что к чему. Таким образом в пользовательском коде, у нас остается
+
+```java
+new Application().go();
+```
+
+Мы можем задекларировать все что нам понадобиться, политики, ресурсы, возможно даже джобы (пока точно не ясно).
+Все что мы не можем задекларировать по какой-то причине, или хотим отдать откуп конфигурации, то мы просто не декларируем это в коде.
+
+Так же возможна конфигурация с properties (`applicaiton.properties` в `resources`)
+
+```properties
+application.name=Rubber demo
+application.render.window.clear=#ffffff
+application.render.window.title=Rubber DWM Demo
+application.render.window.icon=like.png
+application.render.window.size=800x600
+application.render.monitor=0
+```
+
+Соответственно, чисто технически, мы можем обойтись полностью без кода, используя yaml, properties, для декларирования графического интерфейса и настройки приложения, безусловно viewmodel уже задекларировать подобным образом, не выйдет.
+
 ## Спонсирование разработки
 
 Если есть желание и возможность помочь этому проекту, поспособствовать его разработке, то можете написать на `personal@mairwunnx.com` почту, все детали, реквизиты, отправлю ответным письмом.
